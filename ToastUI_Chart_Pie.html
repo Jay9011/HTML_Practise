@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+    <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+    <link rel="stylesheet" href="/css/chart_grap.css">
+    <script>
+        $(function () {
+            const el = document.getElementById('chart-area');
+            const el2 = document.getElementById('chart-area2');
+            const data = {
+                categories: ['Browser'],
+                series: [{
+                        name: 'Chrome',
+                        data: 46,
+                    },
+                    {
+                        name: 'IE',
+                        data: 20,
+                    },
+                ],
+            };
+            const theme = {
+                series: {
+
+                    dataLabels: {
+                        fontSize: 20
+                    }
+                }
+            }
+            const options = {
+                chart: {
+                    title: '',
+                    width: 'auto',
+                    height: 'auto'
+                },
+                legend: {
+                    visible: false,
+                },
+                tooltip: {
+
+                },
+                series: {
+                    radiusRange: {
+                        inner: '80%',
+                        outer: '100%',
+                    },
+                    clockwise: true,
+                    dataLabels: {
+                        visible: false,
+                        pieSeriesName: {
+                            visible: false,
+                        }
+                    }
+                },
+                exportMenu: {
+                    visible: false,
+                },
+                theme: theme,
+            };
+            const chart = toastui.Chart.pieChart({
+                el: el,
+                data: data,
+                options: options
+            });
+            const chart2 = toastui.Chart.pieChart({
+                el: el2,
+                data: data,
+                options: options
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="gate_chart" style="height: 400px;">
+        <div class="gate_label">
+            1층 게이트
+        </div>
+        <div id="chart-area" class="chart_area" style="width:300px; height:300px;">
+            <div class="chart_label">
+                입실
+            </div>
+            <div class="chart_data">
+                <div class="chart_data_center">
+                    100
+                </div>
+            </div>
+        </div>
+        <div id="chart-area2" class="chart_area" style="width:300px; height:300px;">
+            <div class="chart_label">
+                퇴실
+            </div>
+            <div class="chart_data">
+                <div class="chart_data_center">
+                    50
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
