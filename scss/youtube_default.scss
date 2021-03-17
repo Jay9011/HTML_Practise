@@ -34,6 +34,7 @@ ul {
 }
 
 button {
+    background: none;
 
     &,
     &:focus {
@@ -77,39 +78,168 @@ header {
     }
 }
 
-.info {
-    padding: $side-padding;
+.infoAndUpNext {
+    display: flex;
+    flex-direction: column;
 
-    .metadata {
-        .hashtags {
-            display: flex;
-            font-size: $font-small;
-            color: blue;
+    >.info {
+        padding: $side-padding;
 
-            li {
-                margin-right: $side-padding;
+        .metadata {
+            .hashtags {
+                display: flex;
+                font-size: $font-small;
+                color: blue;
+
+                li {
+                    margin-right: $side-padding;
+                }
+            }
+
+            .titleAndButton {
+                display: flex;
+
+                .title {
+                    font-size: $font-medium;
+
+                    &.clamp {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                    }
+                }
+
+                .moreBtn {
+                    height: 100%;
+                    transition: transform 300ms;
+
+                    &.clicked {
+                        transform: rotate(180deg);
+                    }
+                }
             }
         }
 
-        .titleAndButton {
-            display: flex;
+        .views {
+            font-size: $font-small;
+            color: $gray-dark;
+        }
+    }
+}
 
-            .title {
+
+.info .action {
+    display: flex;
+    justify-content: space-around;
+    margin: $side-padding 0;
+
+    button {
+        display: flex;
+        flex-direction: column;
+        font-size: $font-small;
+        color: $gray-dark;
+
+        i {
+            margin: 0 auto;
+            margin-bottom: ($side-padding / 2);
+            font-size: 16px;
+
+            &.active {
+                color: $blue;
+            }
+        }
+    }
+}
+
+.channel {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
+
+    .metadata {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: $avatar-size;
+            height: $avatar-size;
+            border-radius: 50%;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+
+            .name {
                 font-size: $font-medium;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                overflow: hidden;
             }
 
-            .moreBtn {
-                height: 100%;
+            .subscribers {
+                font-size: $font-small;
+                color: $gray-dark;
             }
         }
     }
 
-    .views {
-        font-size: $font-small;
+    .subscribe {
+        text-transform: uppercase;
+        color: $red;
+        font-size: $font-medium;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.upNext {
+    padding: 0 $side-padding;
+
+    >.title {
+        font-size: medium;
         color: $gray-dark;
+        margin-bottom: ($side-padding / 2);
+    }
+
+    .item {
+        display: flex;
+        margin-top: $side-padding;
+
+        .img {
+            flex: 1 1 35%;
+            margin-right: $side-padding;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .info {
+            flex: 1 1 60%;
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-size: $font-medium;
+            }
+
+            .name,
+            .views {
+                font-size: $font-small;
+                color: $gray-dark;
+            }
+        }
+
+        .moreBtn {
+            flex: 1 1 5%;
+        }
+    }
+}
+
+@include pc {
+    .infoAndUpNext {
+        flex-direction: row;
+        margin: $side-padding 0;
     }
 }
